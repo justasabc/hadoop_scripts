@@ -18,9 +18,9 @@ Apache 2.0
 * OS: Ubuntu 12.04 Server 64-bit x86
 * Hadoop: 1.2.1
 * Hbase: 0.94.12
-* ZoopKeeper: 3.4.5
+* zookeeper: 3.4.5
 
-# 2. pre-install (**ALL NODES**)
+# 2. pre-install
 Please run the following commands as **root** and on **all nodes**! 
 
 `su - root`
@@ -61,14 +61,10 @@ Please run the following commands as **root** and on **all nodes**!
 	vim hbase-site.xml
 	vim regionservers
 
-## 2.7 edit zoopkeeper confs
-
-
-# 3. install (**ALL NODES**)
+# 3. install
 Please run the following commands as **root** and on **all nodes**! 
 
 `su - root`
-
 
 ## 3.1 install hadoop
 
@@ -86,7 +82,7 @@ Please run the following commands as **root** and on **all nodes**!
 
 	./update_regionservers
 
-# 4. post-install (**MASTER NODE ONLY**) 
+# 4. post-install
 Please run the following commands as **hduser** and on **master node only**! 
 
 `su - hduser`
@@ -106,8 +102,12 @@ Issue the commands from the **configure_ssh** file.
 Issue the commands from the **format_hdfs** file.
 
 # 5. play with cluster
+Please run the following commands as **hduser** and on **master node only**! 
+
+`su - hduser`
 
 ## 5.1 hadoop
+
 ## 5.1.1 start hadoop
 
 	cd /home/hduser
@@ -124,9 +124,45 @@ Issue the commands from the **format_hdfs** file.
 ## 5.2.1 start hbase
 
 	cd /home/hduser
+	./hadoop/bin/start-dfs.sh
 	./hbase/bin/start-hbase.sh
 	
 ## 5.2.2 stop hbase
 
 	cd /home/hduser
 	./hbase/bin/stop-hbase.sh
+	./hadoop/bin/stop-dfs.sh
+
+# 6. set up a separate zookeeper for cluster
+
+## 6.1 edit zookeeper confs
+Please run the following commands as **root** and on **master node only**! 
+
+`su - root`
+
+	cd ./conf/zookeeper/
+	vim hbase-site.xml
+	vim zoo.cfg
+
+## 6.2 install zookeeper
+
+	./install_zookeeper
+
+## 6.3 play with zookeeper
+Please run the following commands as **hduser** and on **master node only**! 
+
+`su - hduser`
+
+### 6.3.1 start zookeeper
+
+	cd /home/hduser
+	./hadoop/bin/start-dfs.sh
+	./zookeeper/bin/zkServer.sh start
+	./hbase/bin/start-hbase.sh
+
+### 6.3.2 stop zookeeper
+
+	cd /home/hduser
+	./hbase/bin/stop-hbase.sh
+	./zookeeper/bin/zkServer.sh stop
+	./hadoop/bin/stop-dfs.sh

@@ -37,8 +37,10 @@
     <value>master</value>
     <description>if not set, regionserver in slave node will try to connect to localhost for zookeeper server and will fail </description>
   </property>
+  <!--
  <property>
         <name>hbase.zookeeper.property.dataDir</name>
     <value>/home/hduser/tmp/zookeeper</value>
   </property>
+-->
 </configuration>

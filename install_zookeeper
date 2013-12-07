@@ -1,0 +1,43 @@
+#!/bin/bash
+# Please run the following commands as root!
+
+# by default, zookeeper will be started by hbase/bin/start-hbase.sh
+# now we will set up a separate zookeeper server and get rid of hbase's zookeeper
+#====================================================
+# Install zookeeper 
+#====================================================
+echo "Installing ......"
+
+# download zookeeper
+#wget http://www.interior-dsgn.com/apache/zookeeper/stable/zookeeper-3.4.5.tar.gz
+file=./tar/zookeeper-3.4.5.tar.gz
+tar xvf $file
+mv zookeeper-3.4.5 zookeeper
+
+# configure zookeeper
+file=./conf/zookeeper/zoo.cfg
+cp $file ./zookeeper/conf/zoo.cfg
+
+# modify hbase
+# get rid of the one which HBase starts. 
+file=/home/hduser/hbase/conf/hbase-env.sh
+cat >>$file <<EOF
+export HBASE_MANAGES_ZK=False
+EOF
+
+# modify hbase-site.xml
+file=./conf/zookeeper/hbase-site.xml
+cp $file /home/hduser/hbase/conf/hbase-site.xml
+
+# move zookeeper to dest folder
+#============================================
+INSTALL_FOLDER=/home/hduser
+#============================================
+
+dst=$INSTALL_FOLDER
+mv ./zookeeper $dst
+
+# change ownerships of hbase
+chown -R hduser:hadoop $dst
+
+echo "Finished!"

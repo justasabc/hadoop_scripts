@@ -12,12 +12,17 @@ file=./tar/hbase-0.94.12.tar.gz
 tar xzf $file 
 mv hbase-0.94.12 hbase
 
-# configure JAVA_HOME for hbase
+# configure JAVA_HOME and HBASE_CLASSPATH for hbase
 dst=./hbase/conf
 file=$dst/hbase-env.sh
 cat >>$file <<EOF
 export JAVA_HOME=${JAVA_HOME}
+export HBASE_CLASSPATH=/home/hduser/hadoop/conf
 EOF
+
+
+
+# configure JAVA_HOME for hbase
 
 # configure confs for hbase
 file=./conf/hbase/hbase-site.xml 
