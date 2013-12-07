@@ -1,0 +1,23 @@
+#!/bin/bash
+# Please run the following commands as root!
+
+#====================================================
+# Create hadoop accounts
+#====================================================
+# Adding a dedicated Hadoop system user
+addgroup hadoop
+adduser --ingroup hadoop hduser
+# Unix password is 1234
+
+# add permission for hduser
+file=/etc/sudoers.d/hduser
+cat >$file <<EOF
+hduser  ALL=(ALL:ALL) ALL
+EOF
+
+#====================================================
+# Remove hadoop accounts
+#====================================================
+#deluser --remove-home hduser
+#delgroup hadoop
+#rm -r /etc/sudoers.d/hduser

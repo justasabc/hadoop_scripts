@@ -2,45 +2,36 @@
 # Please run the following commands as root!
 
 #====================================================
-# Install Hadoop 
+# Install Hbase 
 #====================================================
 echo "Installing ......"
 
-# download hadoop
+# download hbase
 #wget http://apache.dataguru.cn/hadoop/core/hadoop-1.2.1/hadoop-1.2.1.tar.gz
-file=./tar/hadoop-1.2.1.tar.gz
+file=./tar/hbase-0.94.12.tar.gz
 tar xzf $file 
-mv hadoop-1.2.1 hadoop
+mv hbase-0.94.12 hbase
 
-# configure JAVA_HOME for hadoop
-dst=./hadoop/conf
-file=$dst/hadoop-env.sh
+# configure JAVA_HOME for hbase
+dst=./hbase/conf
+file=$dst/hbase-env.sh
 cat >>$file <<EOF
 export JAVA_HOME=${JAVA_HOME}
 EOF
 
 # configure confs for hbase
-file=./conf/hadoop/core-site.xml 
-cp $file $dst/
-file=./conf/hadoop/mapred-site.xml
-cp $file $dst/
-file=./conf/hadoop/hdfs-site.xml
+file=./conf/hbase/hbase-site.xml 
 cp $file $dst/
 
-# move hadoop to dest folder
+# move hbase to dest folder
 #============================================
-#INSTALL_FOLDER=/home/hduser/test
 INSTALL_FOLDER=/home/hduser
 #============================================
 
 dst=$INSTALL_FOLDER
-mkdir -p $dst
-mv ./hadoop $dst
+mv ./hbase $dst
 
-# mkdir tmp
-mkdir -p $INSTALL_FOLDER/tmp
-
-# change ownerships of hadoop
+# change ownerships of hbase
 chown -R hduser:hadoop $dst
 
 echo "Finished!"

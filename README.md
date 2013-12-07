@@ -1,10 +1,10 @@
-Hadoop Fully-Distributed Installer Scripts
+Hadoop/Hbase Fully-Distributed Installer Scripts
 ==========================================
 
 # 1. introduction
 
 ## 1.1 description
-Hadoop fully-distributed installer scripts and guides for Ubuntu 12.04 Server 64-bit x86. Feel free to get copy of this repository.
+Hadoop and Hbase fully-distributed installer scripts and guides for Ubuntu 12.04 Server 64-bit x86. Feel free to get copy of this repository.
 
 `git clone https://github.com/justasabc/hadoop_scripts.git`
 
@@ -20,77 +20,108 @@ Apache 2.0
 * Hbase: 0.94.12
 * ZoopKeeper: 3.4.5
 
-# 2. pre-modification
+# 2. pre-install
 Please run the following commands as **root** and on **all nodes**! 
 
 `su - root`
 
-## 2.1 edit hosts 
-vim ./conf/hosts
-
-## 2.2 edit hadoop confs
-
-	vim ./conf/hadoop/core-site.xml
-	vim ./conf/hadoop/mapred-site.xml
-	vim ./conf/hadoop/hdfs-site.xml
-
-## 2.3 edit master/slave confs
-
-	vim ./conf/hadoop/masters
-	vim ./conf/hadoop/slaves
-
-# 3. installation for all nodes
-Please run the following commands as **root** and on **all nodes**! 
-
-`su - root`
-
-## 3.1 install jdk
+## 2.1 install jdk
 
 	cd pre/jdk/
 	./install_jdk
 
-## 3.2 disable ipv6
+## 2.2 disable ipv6
 
 	cd pre/
 	./disable_ipv6
 
-## 3.3 install hadoop
+## 2.3 update hosts 
 
-	./install_hadoop
+	cd pre/
+	vim ./hosts
+	./update_hosts
 
-## 3.4 uninstall hadoop(optional)
+## 2.4 create hadoop accouts
 
-	./uninstall_hadoop
+	cd pre/
+	./create_hadoop_accounts
 
-# 4. update for master node **ONLY**
-Please run the following commands as **root** and on **master node only**! 
+## 2.5 edit hadoop confs
+
+	cd ./conf/hadoop/
+	vim core-site.xml
+	vim mapred-site.xml
+	vim hdfs-site.xml
+	vim masters
+	vim slaves
+
+## 2.6 edit hbase confs
+
+	cd ./conf/hbase/
+	vim hbase-site.xml
+	vim regionservers
+
+## 2.7 edit zoopkeeper confs
+
+
+# 3. install 
+Please run the following commands as **root** and on **all nodes**! 
 
 `su - root`
 
-	./update_master
 
-# 5. start/stop hadoop cluster
+## 3.1 install hadoop
+
+	./install_hadoop
+
+## 3.1.1 update hadoop for **MASTER NODE ONLY**
+
+	./update_masters_slaves
+
+## 3.2 install hbase
+
+	./install_hbase
+
+## 3.2.1 update hbase for **MASTER NODE ONLY**
+
+	./update_regionservers
+
+# 4. post-install (**MASTER ONLY**) 
 Please run the following commands as **hduser** and on **master node only**! 
 
 `su - hduser`
 
-## 5.1 configure ssh 
+## 4.1 configure ssh 
 
 	cd post
 	vim configure_ssh.ini
 
-## 5.2 format hdfs
+## 4.2 format hdfs
 	cd post
 	vim format_hdfs.ini
 
-## 5.3 start hadoop
+# 5. play with cluster
+
+## 5.1 hadoop
+## 5.1.1 start hadoop
 
 	cd /home/hduser
 	./hadoop/bin/start-dfs.sh
 	./hadoop/bin/start-mapred.sh
 	
-## 5.4 stop hadoop
+## 5.1.2 stop hadoop
 
 	cd /home/hduser
 	./hadoop/bin/stop-mapred.sh
 	./hadoop/bin/stop-dfs.sh
+
+## 5.2 hbase
+## 5.2.1 start hbase
+
+	cd /home/hduser
+	./hbase/bin/start-hbase.sh
+	
+## 5.2.2 stop hbase
+
+	cd /home/hduser
+	./hbase/bin/stop-hbase.sh
