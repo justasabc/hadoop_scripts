@@ -21,7 +21,7 @@ Apache 2.0
 * ZoopKeeper: 3.4.5
 
 # 2. pre-modification
-Please run the following commands as root!
+Please run the following commands as **root** and on **all nodes**! 
 
 `su - root`
 
@@ -29,15 +29,21 @@ Please run the following commands as root!
 vim ./conf/hosts
 
 ## 2.2 edit hadoop confs
-vim ./conf/hadoop/core-site.xml
-vim ./conf/hadoop/mapred-site.xml
-vim ./conf/hadoop/hdfs-site.xml
+
+	vim ./conf/hadoop/core-site.xml
+	vim ./conf/hadoop/mapred-site.xml
+	vim ./conf/hadoop/hdfs-site.xml
 
 ## 2.3 edit master/slave confs
-vim ./conf/hadoop/masters
-vim ./conf/hadoop/slaves
+
+	vim ./conf/hadoop/masters
+	vim ./conf/hadoop/slaves
 
 # 3. installation for all nodes
+Please run the following commands as **root** and on **all nodes**! 
+
+`su - root`
+
 ## 3.1 install jdk
 
 	cd pre/jdk/
@@ -56,12 +62,15 @@ vim ./conf/hadoop/slaves
 
 	./uninstall_hadoop
 
-# 4. update for master node *ONLY*
+# 4. update for master node **ONLY**
+Please run the following commands as **root** and on **master node only**! 
+
+`su - root`
 
 	./update_master
 
-# 5. start hadoop cluster
-Please run the following commands as hduser!
+# 5. start/stop hadoop cluster
+Please run the following commands as **hduser** and on **master node only**! 
 
 `su - hduser`
 
@@ -80,7 +89,7 @@ Please run the following commands as hduser!
 	./hadoop/bin/start-dfs.sh
 	./hadoop/bin/start-mapred.sh
 	
-## 5.4 start hadoop
+## 5.4 stop hadoop
 
 	cd /home/hduser
 	./hadoop/bin/stop-mapred.sh
