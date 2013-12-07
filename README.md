@@ -20,7 +20,7 @@ Apache 2.0
 * Hbase: 0.94.12
 * ZoopKeeper: 3.4.5
 
-# 2. pre-install
+# 2. pre-install (**ALL NODES**)
 Please run the following commands as **root** and on **all nodes**! 
 
 `su - root`
@@ -64,7 +64,7 @@ Please run the following commands as **root** and on **all nodes**!
 ## 2.7 edit zoopkeeper confs
 
 
-# 3. install 
+# 3. install (**ALL NODES**)
 Please run the following commands as **root** and on **all nodes**! 
 
 `su - root`
@@ -74,7 +74,7 @@ Please run the following commands as **root** and on **all nodes**!
 
 	./install_hadoop
 
-## 3.1.1 update hadoop for **MASTER NODE ONLY**
+## 3.1.1 update hadoop (**MASTER NODE ONLY**)
 
 	./update_masters_slaves
 
@@ -82,11 +82,11 @@ Please run the following commands as **root** and on **all nodes**!
 
 	./install_hbase
 
-## 3.2.1 update hbase for **MASTER NODE ONLY**
+## 3.2.1 update hbase (**MASTER NODE ONLY**)
 
 	./update_regionservers
 
-# 4. post-install (**MASTER ONLY**) 
+# 4. post-install (**MASTER NODE ONLY**) 
 Please run the following commands as **hduser** and on **master node only**! 
 
 `su - hduser`
@@ -96,9 +96,14 @@ Please run the following commands as **hduser** and on **master node only**!
 	cd post
 	vim configure_ssh.ini
 
+Issue the commands from the **configure_ssh** file.
+
 ## 4.2 format hdfs
+
 	cd post
 	vim format_hdfs.ini
+
+Issue the commands from the **format_hdfs** file.
 
 # 5. play with cluster
 
