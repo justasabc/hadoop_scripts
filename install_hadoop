@@ -34,11 +34,7 @@ INSTALL_FOLDER=/home/hduser
 #============================================
 
 dst=$INSTALL_FOLDER
-mkdir -p $dst
 mv ./hadoop $dst
-
-# mkdir tmp
-mkdir -p $INSTALL_FOLDER/tmp
 
 # change ownerships of hadoop
 chown -R hduser:hadoop $dst

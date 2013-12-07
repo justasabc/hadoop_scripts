@@ -6,7 +6,7 @@
 <configuration>
      <property>
          <name>dfs.replication</name>
-         <value>2</value>
+         <value>1</value>
 	<!-- value less or equal than DataNode counts -->
      </property>
 </configuration>
