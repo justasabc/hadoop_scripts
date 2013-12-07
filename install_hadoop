@@ -1,0 +1,60 @@
+#!/bin/bash
+# Please run the following commands as root!
+
+#====================================================
+# Step 1: Create hadoop accounts
+#====================================================
+# Adding a dedicated Hadoop system user
+addgroup hadoop
+adduser --ingroup hadoop hduser
+# Unix password is 1234
+
+# add permission for hduser
+file=/etc/sudoers.d/hduser
+cat >$file <<EOF
+hduser  ALL=(ALL:ALL) ALL
+EOF
+
+#====================================================
+# Step 2: Install Hadoop 
+#====================================================
+echo "Installing ......"
+
+# download hadoop
+#wget http://apache.dataguru.cn/hadoop/core/hadoop-1.2.1/hadoop-1.2.1.tar.gz
+file=./tar/hadoop-1.2.1.tar.gz
+tar xzf $file 
+mv hadoop-1.2.1 hadoop
+
+# configure JAVA_HOME
+dst=./hadoop/conf
+file=$dst/hadoop-env.sh
+cat >>$file <<EOF
+export JAVA_HOME=${JAVA_HOME}
+EOF
+
+# configure confs
+file=./conf/hadoop/core-site.xml 
+cp $file $dst/
+file=./conf/hadoop/mapred-site.xml
+cp $file $dst/
+file=./conf/hadoop/hdfs-site.xml
+cp $file $dst/
+
+# move hadoop to dest folder
+#============================================
+#INSTALL_FOLDER=/home/hduser/test
+INSTALL_FOLDER=/home/hduser
+#============================================
+
+dst=$INSTALL_FOLDER
+mkdir -p $dst
+mv  ./hadoop $dst
+
+# mkdir tmp
+mkdir -p $INSTALL_FOLDER/tmp
+
+# change ownerships of hadoop
+chown -R hduser:hadoop $dst
+
+echo "Finished!"

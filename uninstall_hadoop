@@ -1,0 +1,30 @@
+#!/bin/bash
+# Please run the following commands as root!
+
+# remove hadoop files
+#============================================
+#INSTALL_FOLDER=/home/hduser/test
+INSTALL_FOLDER=/home/hduser
+#============================================
+
+dst=$INSTALL_FOLDER/hadoop
+if [ -d $dst ];then
+	rm -r $dst
+fi
+
+dst=$INSTALL_FOLDER/tmp
+if [ -d $dst ];then
+	rm -r $dst
+fi
+
+# delete hadoop accounts
+file=/etc/sudoers.d/hduser
+if [ -f $dst ];then
+	rm -r $file
+fi
+
+#deluser --remove-home hduser
+#delgroup hadoop
+
+echo "Finished."
+

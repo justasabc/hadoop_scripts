@@ -1,0 +1,21 @@
+#!/bin/bash
+file=jdk-6u35-linux-x64.bin 
+src=./$file
+dst=/usr/lib/jvm/
+rm -r $dst
+mkdir $dst
+cp $src $dst
+cd $dst
+echo "===================================================="
+bash $file
+rm $file
+echo "===================================================="
+ln -s /usr/lib/jvm/jdk1.6.0_35 /usr/lib/jvm/javahome
+
+src=./javahome
+dst=/etc/profile
+cat $src >> $dst
+source $dst
+
+echo $JAVA_HOME
+echo $PATH
