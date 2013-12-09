@@ -20,6 +20,64 @@ Apache 2.0
 * Hbase: 0.94.12
 * zookeeper: 3.4.5
 
+**NOTICE**
+Please download jdk and tar files and place in corresponding folder.
+Then the **offical** folder structure should look like this:
+
+.
+├── conf
+│   ├── hadoop
+│   │   ├── core-site.xml
+│   │   ├── hdfs-site.xml
+│   │   ├── mapred-site.xml
+│   │   ├── masters
+│   │   └── slaves
+│   ├── hbase
+│   │   ├── hbase-site.xml
+│   │   └── regionservers
+│   └── zookeeper
+│       ├── hbase-site.xml
+│       └── zoo.cfg
+├── examples
+│   └── wordcount
+│       ├── cmd.ini
+│       └── WordCount.java
+├── guides
+│   ├── hadoop.ini
+│   ├── hbase.ini
+│   ├── params_hbase.ini
+│   ├── rest_hbase.ini
+│   └── thrift_hbase.ini
+├── install_hadoop
+├── install_hbase
+├── install_zookeeper
+├── post
+│   ├── configure_ssh.ini
+│   ├── format_hdfs.ini
+│   └── run_as_hduser_on_master_only
+├── pre
+│   ├── create_hadoop_accounts
+│   ├── demos_hosts
+│   ├── disable_ipv6
+│   ├── hosts
+│   ├── jdk
+│   │   ├── install_jdk
+│   │   ├── javahome
+│   │   ├── jdk-6u35-linux-i586.bin
+│   │   └── jdk-6u35-linux-x64.bin
+│   ├── run_as_root_on_all_nodes
+│   └── update_hosts
+├── README.md
+├── tar
+│   ├── hadoop-1.2.1.tar.gz
+│   ├── hbase-0.94.12.tar.gz
+│   └── zookeeper-3.4.5.tar.gz
+├── update_masters_slaves
+└── update_regionservers
+
+11 directories, 38 files
+
+
 # 2. pre-install
 Please run the following commands as **root** and on **all nodes**! 
 
@@ -113,12 +171,20 @@ Please run the following commands as **hduser** and on **master node only**!
 	cd /home/hduser
 	./hadoop/bin/start-dfs.sh
 	./hadoop/bin/start-mapred.sh
+or 
+
+	cd /home/hduser
+	./hadoop/bin/start-all.sh
 	
 ## 5.1.2 stop hadoop
 
 	cd /home/hduser
 	./hadoop/bin/stop-mapred.sh
 	./hadoop/bin/stop-dfs.sh
+or 
+
+	cd /home/hduser
+	./hadoop/bin/stop-all.sh
 
 ## 5.2 hbase
 ## 5.2.1 start hbase
