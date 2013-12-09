@@ -22,8 +22,10 @@ Apache 2.0
 
 **NOTICE**
 
-Please download jdk and tar files and place in corresponding folder.
+* Please download **jdk-6u35-linux-i586.bin** or **jdk-6u35-linux-x64.bin** and place in **./offical/pre/jdk/** folder.
+* Please download **hadoop-1.2.1.tar.gz**, **hbase-0.94.12.tar.gz** and **zookeeper-3.4.5.tar.gz** and place in **./offical/tar/** folder.
 Then the **offical** folder structure should look like this:
+
 ```
 .
 ├── conf
