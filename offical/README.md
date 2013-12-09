@@ -178,8 +178,11 @@ or
 
 	cd /home/hduser
 	./hadoop/bin/start-all.sh
+
+## 5.1.2 run a mapreduce task(WordCount)
 	
-## 5.1.2 stop hadoop
+
+## 5.1.3 stop hadoop
 
 	cd /home/hduser
 	./hadoop/bin/stop-mapred.sh
@@ -190,17 +193,45 @@ or
 	./hadoop/bin/stop-all.sh
 
 ## 5.2 hbase
-## 5.2.1 start hbase
+
+## 5.2.1 play with hbase
+
+### 5.2.1.1 start hbase
 
 	cd /home/hduser
 	./hadoop/bin/start-dfs.sh
 	./hbase/bin/start-hbase.sh
-	
-## 5.2.2 stop hbase
+
+### 5.2.1.2 run hbase shell
+
+	cd /home/hduser
+	./hbase/bin/hbase shell
+
+### 5.2.1.3 stop hbase
 
 	cd /home/hduser
 	./hbase/bin/stop-hbase.sh
 	./hadoop/bin/stop-dfs.sh
+
+## 5.2.2 play with rest
+
+## 5.2.2.1 start rest
+**NOTICE**
+
+Please start hbase first.
+
+	./hbase/bin/hbase-daemon.sh start rest -p 8080
+
+## 5.2.2.2 access rest services
+
+	curl http://master:8080/
+	curl http://master:8080/version
+	curl http://master:8080/version/cluster
+	curl http://master:8080/status/cluster
+
+## 5.2.2.3 stop rest
+
+	./hbase/bin/hbase-daemon.sh stop rest
 
 # 6. set up a separate zookeeper for cluster
 
