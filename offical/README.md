@@ -21,9 +21,10 @@ Apache 2.0
 * zookeeper: 3.4.5
 
 **NOTICE**
+
 Please download jdk and tar files and place in corresponding folder.
 Then the **offical** folder structure should look like this:
-
+```
 .
 ├── conf
 │   ├── hadoop
@@ -76,7 +77,7 @@ Then the **offical** folder structure should look like this:
 └── update_regionservers
 
 11 directories, 38 files
-
+```
 
 # 2. pre-install
 Please run the following commands as **root** and on **all nodes**! 
