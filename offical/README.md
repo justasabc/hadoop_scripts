@@ -231,6 +231,23 @@ or
 
 	./hbase/bin/hbase-daemon.sh stop rest
 
+## 5.2.3 play with thrift
+
+## 5.2.3.1 start thrift
+**NOTICE**: Please start hbase first.
+
+	./hbase/bin/hbase-daemon.sh start thrift -p 9090
+
+## 5.2.2.2 access thrift services
+See `examples/python/pyhbase/gis.py` for accessing hbase by using hbase/thrift python library. 
+
+## 5.2.2.3 stop thrift
+
+	./hbase/bin/hbase-daemon.sh stop thrift
+
+# 6. set up a separate zookeeper for cluster
+
+
 # 6. set up a separate zookeeper for cluster
 
 ## 6.1 edit zookeeper confs
