@@ -22,12 +22,12 @@ Apache 2.0
 
 **NOTICE**
 
-* Please download **jdk-6u35-linux-i586.bin** or **jdk-6u35-linux-x64.bin** and place in **./offical/pre/jdk/** folder.
-* Please download **hadoop-1.2.1.tar.gz**, **hbase-0.94.12.tar.gz** and **zookeeper-3.4.5.tar.gz** and place in **./offical/tar/** folder.
+* Please download **jdk-6u35-linux-i586.bin** or **jdk-6u35-linux-x64.bin** and place in **`./offical/pre/jdk/`** folder.
+* Please download **hadoop-1.2.1.tar.gz**, **hbase-0.94.12.tar.gz** and **zookeeper-3.4.5.tar.gz** and place in **`./offical/tar/`** folder.
 * Then the **offical** folder structure should look like this:
 
 ```
-.
+offical/
 ├── conf
 │   ├── hadoop
 │   │   ├── core-site.xml
@@ -42,10 +42,20 @@ Apache 2.0
 │       ├── hbase-site.xml
 │       └── zoo.cfg
 ├── examples
-│   └── wordcount
-│       ├── cmd.ini
-│       └── WordCount.java
+│   ├── java
+│   │   └── wordcount
+│   │       ├── cmd.ini
+│   │       └── WordCount.java
+│   └── python
+│       └── pyhbase
+│           ├── gis.py
+│           ├── hbase
+│           │   └── ...
+│           ├── __init__.py
+│           └── thrift
+│               └── ...
 ├── guides
+│   ├── compile_thrift_for_python.ini
 │   ├── hadoop.ini
 │   ├── hbase.ini
 │   ├── params_hbase.ini
@@ -71,19 +81,19 @@ Apache 2.0
 │   ├── run_as_root_on_all_nodes
 │   └── update_hosts
 ├── README.md
-├── tar
-│   ├── hadoop-1.2.1.tar.gz
-│   ├── hbase-0.94.12.tar.gz
-│   └── zookeeper-3.4.5.tar.gz
-├── update_masters_slaves
-└── update_regionservers
+└── tar
+    ├── hadoop-1.2.1.tar.gz
+    ├── hbase-0.94.12.tar.gz
+    ├── thrift-0.9.1.tar.gz
+    └── zookeeper-3.4.5.tar.gz
 
-11 directories, 38 files
+19 directories, 81 files
+
 ```
 
-## 1.5 About installation
+## 1.5 overall planning
 * install hadoop and hbase on all nodes. what's more, configuration files on all nodes are same.
-* only need to install zookeeper on master node.
+* install zookeeper on master node.
 * only need to issue commands on master node to start hadoop, zookeeper,hbase(including rest and thrift gateway).
 
 # 2. pre-install
