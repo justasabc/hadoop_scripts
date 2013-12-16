@@ -216,9 +216,7 @@ or
 ## 5.2.2 play with rest
 
 ## 5.2.2.1 start rest
-**NOTICE**
-
-Please start hbase first.
+**NOTICE**: Please start hbase first.
 
 	./hbase/bin/hbase-daemon.sh start rest -p 8080
 
