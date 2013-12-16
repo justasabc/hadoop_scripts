@@ -26,6 +26,10 @@ file=./conf/hadoop/mapred-site.xml
 cp $file $dst/
 file=./conf/hadoop/hdfs-site.xml
 cp $file $dst/
+file=./conf/hadoop/masters
+cp $file $dst/
+file=./conf/hadoop/slaves
+cp $file $dst/
 
 # move hadoop to dest folder
 #============================================

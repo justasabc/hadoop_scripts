@@ -23,6 +23,8 @@ EOF
 # configure confs for hbase
 file=./conf/hbase/hbase-site.xml 
 cp $file $dst/
+file=./conf/hbase/regionservers
+cp $file $dst/
 
 # move hbase to dest folder
 #============================================

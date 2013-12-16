@@ -1,5 +1,5 @@
 Hadoop/Hbase Fully-Distributed Installer Scripts
-==========================================
+================================================
 
 # 1. introduction
 
@@ -81,6 +81,11 @@ Apache 2.0
 11 directories, 38 files
 ```
 
+## 1.5 About installation
+* install hadoop and hbase on all nodes. what's more, configuration files on all nodes are same.
+* only need to install zookeeper on master node.
+* only need to issue commands on master node to start hadoop, zookeeper,hbase(including rest and thrift gateway).
+
 # 2. pre-install
 Please run the following commands as **root** and on **all nodes**! 
 
@@ -131,17 +136,9 @@ Please run the following commands as **root** and on **all nodes**!
 
 	./install_hadoop
 
-## 3.1.1 update hadoop (**MASTER NODE ONLY**)
-
-	./update_masters_slaves
-
 ## 3.2 install hbase
 
 	./install_hbase
-
-## 3.2.1 update hbase (**MASTER NODE ONLY**)
-
-	./update_regionservers
 
 # 4. post-install
 Please run the following commands as **hduser** and on **master node only**! 
@@ -179,8 +176,8 @@ or
 	cd /home/hduser
 	./hadoop/bin/start-all.sh
 
-## 5.1.2 run a mapreduce task(WordCount)
-	
+## 5.1.2 run a mapreduce task
+See `examples/java/wordcount/`.
 
 ## 5.1.3 stop hadoop
 
@@ -244,9 +241,6 @@ See `examples/python/pyhbase/gis.py` for accessing hbase by using hbase/thrift p
 ## 5.2.2.3 stop thrift
 
 	./hbase/bin/hbase-daemon.sh stop thrift
-
-# 6. set up a separate zookeeper for cluster
-
 
 # 6. set up a separate zookeeper for cluster
 
