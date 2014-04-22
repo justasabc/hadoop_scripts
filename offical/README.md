@@ -245,10 +245,10 @@ or
 
 	./hbase/bin/hbase-daemon.sh start thrift -p 9090
 
-## 5.2.2.2 access thrift services
+## 5.2.3.2 access thrift services
 See `examples/python/pyhbase/gis.py` for accessing hbase by using hbase/thrift python library. 
 
-## 5.2.2.3 stop thrift
+## 5.2.3.3 stop thrift
 
 	./hbase/bin/hbase-daemon.sh stop thrift
 

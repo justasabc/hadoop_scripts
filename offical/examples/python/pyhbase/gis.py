@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys
 
 from thrift.transport import TSocket, TTransport
